@@ -59,8 +59,11 @@
             </table>
         </div>
 
-        <!-- Botón para exportar en Excel -->
-        <button onclick="exportarExcel()" class="mt-6 bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Exportar en Excel</button>
+        <!-- Botones para exportar y reiniciar -->
+        <div class="mt-6 flex justify-between">
+            <button onclick="exportarExcel()" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Exportar en Excel</button>
+            <button onclick="reiniciarRegistro()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Reiniciar Registro</button>
+        </div>
     </div>
 
     <script>
@@ -136,6 +139,15 @@
 
             // Exportar el archivo
             XLSX.writeFile(wb, 'registro_cartas_emaus.xlsx');
+        }
+
+        function reiniciarRegistro() {
+            if (confirm("¿Estás seguro de que deseas reiniciar el registro? Se perderá toda la información.")) {
+                localStorage.removeItem('cartasPorCaminante'); // Borrar el almacenamiento local
+                cartasPorCaminante = {}; // Reiniciar la variable de datos
+                actualizarTabla(); // Actualizar la tabla
+                alert("Registro reiniciado con éxito.");
+            }
         }
 
         // Cargar la tabla al iniciar la página
