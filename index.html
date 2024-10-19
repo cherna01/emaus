@@ -43,7 +43,7 @@
                 <thead>
                     <tr class="bg-gray-200 text-gray-600 text-sm uppercase">
                         <th class="py-2 px-4 border-b">Código</th>
-                        <th class="py-2 px-4 border-b">Destinatarios</th>
+                        <th class="py-2 px-4 border-b">remitente</th>
                         <th class="py-2 px-4 border-b">Total de Cartas</th>
                     </tr>
                 </thead>
@@ -104,14 +104,14 @@
             const codigosOrdenados = Object.keys(cartasPorCaminante).sort((a, b) => a - b);
 
             for (let codigo of codigosOrdenados) {
-                const destinatarios = cartasPorCaminante[codigo].join(', ');
+                const remitente = cartasPorCaminante[codigo].join(', ');
                 const numCartas = cartasPorCaminante[codigo].length;
                 totalCartas += numCartas;
 
                 tbody.innerHTML += `
                     <tr>
                         <td class="py-2 px-4 border-b">${codigo}</td>
-                        <td class="py-2 px-4 border-b">${destinatarios}</td>
+                        <td class="py-2 px-4 border-b">${remitente}</td>
                         <td class="py-2 px-4 border-b">${numCartas}</td>
                     </tr>
                 `;
@@ -123,14 +123,14 @@
         function exportarExcel() {
             // Crear una hoja de cálculo
             const wb = XLSX.utils.book_new();
-            const ws_data = [['Código', 'Destinatarios', 'Total de Cartas']];
+            const ws_data = [['Código', 'remitente', 'Total de Cartas']];
 
             // Obtener los datos de la tabla
             const codigosOrdenados = Object.keys(cartasPorCaminante).sort((a, b) => a - b);
             for (let codigo of codigosOrdenados) {
-                const destinatarios = cartasPorCaminante[codigo].join(', ');
+                const remitente = cartasPorCaminante[codigo].join(', ');
                 const numCartas = cartasPorCaminante[codigo].length;
-                ws_data.push([codigo, destinatarios, numCartas]);
+                ws_data.push([codigo, remitente, numCartas]);
             }
 
             // Añadir la hoja con los datos
