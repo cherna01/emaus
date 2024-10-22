@@ -36,11 +36,7 @@
             <input type="text" id="destinatario" class="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm" placeholder="Ingrese el nombre del destinatario">
             <button onclick="agregarCarta()" class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Agregar Carta</button>
         </div>
-<div>
-        <a href="index.html" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
-            Volver al Inicio
-        </a>
-    </div>
+
         <!-- Tabla de registros -->
         <div class="mt-6">
             <h2 class="text-xl font-bold text-gray-700 mb-4">Listado de Cartas Recibidas</h2>
@@ -70,7 +66,11 @@
             <button onclick="reiniciarRegistro()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">Reiniciar Registro</button>
         </div>
     </div>
-
+<div>
+        <a href="home.html" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+            Volver al Inicio
+        </a>
+    </div>
     <script>
         let cartasPorCaminante = JSON.parse(localStorage.getItem('cartasPorCaminante')) || {};
 
